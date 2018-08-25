@@ -14,5 +14,10 @@ namespace Shift.Mobile
             InitializeComponent();
             BindingContext = App.Locator.MainPageViewModel;
         }
+
+        //protected override void OnAppearing()
+        //{
+        //    App.Locator.MainPageViewModel.Loaded.Execute(null);
+        //}
     }
 }
