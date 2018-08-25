@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Shift.Mobile"
+             xmlns:cal="clr-namespace:Syncfusion.SfCalendar.XForms;assembly=Syncfusion.SfCalendar.XForms"
+             x:Class="Shift.Mobile.MainPage"
+             Title="Shift Registration"
+             >
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Test1" Order="Secondary" />
+        <ToolbarItem Text="Test2" Order="Secondary" />
+    </ContentPage.ToolbarItems>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <cal:SfCalendar Grid.Row="0" />
+        <StackLayout Orientation="Vertical" 
+                     HorizontalOptions="Fill" VerticalOptions="Fill" Grid.Row="1"
+                     Margin="0,25,0,10"
+                     >
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Switch />
+                <Label Text="Early Shift" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Switch />
+                <Label Text="Late Shift" />
+            </StackLayout>
+        </StackLayout>
+    </Grid>
+
+</ContentPage>
