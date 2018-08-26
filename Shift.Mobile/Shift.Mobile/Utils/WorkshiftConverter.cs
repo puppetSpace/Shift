@@ -19,6 +19,7 @@ namespace Shift.Mobile.Utils
                 EndTime = workShift.Date,
                 IsAllDay = true,
                 Subject = $"Working the {Enum.GetName(typeof(ShiftType), workShift.ShiftType)} shift",
+                ClassId = Enum.GetName(typeof(ShiftType), workShift.ShiftType),
                 Color = workShift.ShiftType == ShiftType.Early ? Color.FromHex("FEB048") : Color.FromHex("233157")
             };
         }

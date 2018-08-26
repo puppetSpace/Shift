@@ -9,6 +9,7 @@
              >
     <ContentPage.Behaviors>
         <b:EventToCommandBehavior Command="{Binding Loaded}" EventName="Appearing" />
+        <b:EventToCommandBehavior Command="{Binding UnLoaded}" EventName="Disappearing" />
     </ContentPage.Behaviors>
 
     <!--<ContentPage.ToolbarItems>
@@ -33,11 +34,11 @@
                      Margin="0,25,0,10"
                      >
             <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-                <Switch IsToggled="{Binding IsEarlyShiftToggled}" />
+                <Switch IsToggled="{Binding IsEarlyShiftToggled, Mode=TwoWay}" />
                 <Label Text="Early Shift" />
             </StackLayout>
             <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-                <Switch IsToggled="{Binding IsLateShiftToggled}" />
+                <Switch IsToggled="{Binding IsLateShiftToggled, Mode=TwoWay}" />
                 <Label Text="Late Shift" />
             </StackLayout>
         </StackLayout>

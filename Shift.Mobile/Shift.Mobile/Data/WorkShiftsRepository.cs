@@ -24,6 +24,16 @@ namespace Shift.Mobile.Data
             return _workShifts;
         }
 
+        public IReadOnlyCollection<WorkShift> Get(DateTime date)
+        {
+            return _workShifts.Where(x => x.Date.Date == date.Date).ToList();
+        }
+
+        public WorkShift Get(DateTime date, ShiftType shiftType)
+        {
+            return _workShifts.FirstOrDefault(x => x.Date.Date == date.Date && x.ShiftType == shiftType);
+        }
+
         public void Insert(WorkShift workShift)
         {
             _workShifts.Add(workShift);
@@ -37,9 +47,14 @@ namespace Shift.Mobile.Data
         public void Load()
         {
             var content = System.IO.File.ReadAllText(_dataFilePath);
-            _workShifts = JsonConvert.DeserializeObject<List<WorkShift>>(content);
+            _workShifts = JsonConvert.DeserializeObject<List<WorkShift>>(content)??new List<WorkShift>();
 
         }
 
+        internal void Save()
+        {
+            var content = JsonConvert.SerializeObject(_workShifts);
+            System.IO.File.WriteAllText(_dataFilePath, content);
+        }
     }
 }
