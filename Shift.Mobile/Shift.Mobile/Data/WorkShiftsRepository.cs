@@ -15,7 +15,7 @@ namespace Shift.Mobile.Data
         {
             _dataFilePath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "shifts.json");
             if (!System.IO.File.Exists(_dataFilePath))
-                System.IO.File.Create(_dataFilePath);
+                System.IO.File.Create(_dataFilePath).Dispose();
         }
 
 
@@ -47,7 +47,10 @@ namespace Shift.Mobile.Data
         public void Load()
         {
             var content = System.IO.File.ReadAllText(_dataFilePath);
-            _workShifts = JsonConvert.DeserializeObject<List<WorkShift>>(content)??new List<WorkShift>();
+            if (content == null || String.IsNullOrWhiteSpace(content))
+                return;
+
+            _workShifts = JsonConvert.DeserializeObject<List<WorkShift>>(content) ?? new List<WorkShift>();
 
         }
 

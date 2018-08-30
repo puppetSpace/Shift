@@ -75,6 +75,7 @@ namespace Shift.Mobile.ViewModels
                 _workshiftCalendar.Add(workshift, inlineCalendarEvent);
             }
 
+            OnDateChanged();
             _isAlreadyLoaded = true;
         }
 
